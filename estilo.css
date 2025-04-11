@@ -1,0 +1,391 @@
+/* General Body */
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background: #f5faff;
+  color: #222;
+}
+
+/* Menú lateral */
+.menu-lateral {
+  position: fixed;
+  z-index: 2;
+  width: 250px;
+  height: 100vh;
+  background: linear-gradient(to bottom, #cceeff, #e6f7ff);
+  padding: 20px;
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+  transition: width 0.3s ease;
+  overflow-y: auto;
+}
+
+.menu-lateral h1 {
+  font-size: 24px;
+  color: #007acc;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.menu-lateral nav ul {
+  list-style: none;
+  padding: 0;
+}
+
+.menu-lateral nav ul li {
+  margin: 10px 0;
+}
+
+.menu-lateral nav ul li a {
+  text-decoration: none;
+  color: #005577;
+  font-weight: bold;
+  padding: 8px;
+  display: block;
+  transition: all 0.3s;
+}
+
+.menu-lateral nav ul li a:hover {
+  color: #0099cc;
+}
+
+/* Dropdown general */
+.menu-lateral .dropdown ul {
+  display: none;
+  padding-left: 20px;
+}
+
+/* Mostrar el dropdown al pasar el mouse */
+.menu-lateral .dropdown:hover ul {
+  display: block;
+}
+
+/* Estilo para las localidades */
+.submenu {
+  display: none;
+  padding-left: 20px;
+}
+
+.menu-lateral .dropdown:hover .submenu {
+  display: block;
+}
+
+/* 👉 Scroll para el submenú de oficios si hay muchos elementos */
+.menu-lateral .dropdown-content {
+  max-height: 300px;      /* Altura máxima del submenú */
+  overflow-y: auto;       /* Scroll si se excede */
+  padding-right: 10px;    /* Espacio para la barra de scroll */
+}
+
+/* Estilo principal */
+main {
+  margin-left: 300px;
+  padding: 20px;
+  position: relative;
+  z-index: 1;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+/* Presentación */
+.presentacion {
+  text-align: center;
+  margin-bottom: 30px;
+  background: linear-gradient(to right, #00bfff, #007bff);
+  padding: 40px;
+  border-radius: 15px;
+  color: white;
+}
+
+.presentacion h2 {
+  font-size: 40px;
+  font-family: 'Poppins', sans-serif;
+  text-transform: uppercase;
+  font-weight: 700;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.presentacion p {
+  font-size: 20px;
+  color: #fff;
+  margin-bottom: 10px;
+}
+
+.boton-vermas {
+  display: inline-block;
+  padding: 12px 25px;
+  background: #00bfff;
+  color: white;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: bold;
+  font-size: 18px;
+  border: 2px solid #007bff;
+}
+
+.boton-vermas:hover {
+  background: #007bff;
+  color: white;
+}
+
+/* Banner */
+.banner-container {
+  position: relative;
+  width: 100%;
+  height: 400px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #fff;
+  border-radius: 20px;
+}
+
+.banner-img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;  /* Esto hace que la imagen cubra todo el área sin distorsionarse */
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+.banner-img.active {
+  opacity: 1;
+}
+
+/* Media Queries para dispositivos móviles */
+@media screen and (max-width: 768px) {
+  .banner-container {
+    height: 250px; /* Reducir la altura del banner en dispositivos más pequeños */
+  }
+
+  .banner-img {
+    object-position: center center; /* Asegura que la imagen esté centrada */
+  }
+}
+
+/* Soles a los costados del banner */
+.sol {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 90px;
+  height: 90px;
+  filter: drop-shadow(0 0 8px #ffd700);
+  z-index: 1;
+}
+
+.sol-izquierda {
+  left: 5%;
+}
+
+.sol-derecha {
+  right: 5%;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+#ofertas-relampago {
+  width: 100%;
+  overflow: hidden;
+  margin-top: 30px;
+}
+
+.ofertas-carrusel {
+  display: flex;
+  width: 200%; /* Duplicamos el tamaño del contenedor para tener 2 sets de ofertas */
+  animation: moverOfertas 20s linear infinite; /* Deslizar lentamente en 20 segundos */
+  transition: none; /* Asegura que la transición se maneje solo cuando el mouse esté sobre */
+}
+
+.oferta {
+  background: #ffffff;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 15px;
+  width: 220px;
+  text-align: center;
+  margin-right: 20px; /* Espacio entre las ofertas */
+}
+
+/* Imagen de las ofertas */
+.oferta img {
+  width: 100%;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+/* Animación para mover las ofertas */
+@keyframes moverOfertas {
+  0% {
+    transform: translateX(0); /* Comienza desde la posición original */
+  }
+  100% {
+    transform: translateX(-50%); /* Mueve todo el contenido fuera de la pantalla */
+  }
+}
+
+/* Cuando el mouse está sobre el carrusel, se detiene la animación */
+#ofertas-relampago:hover .ofertas-carrusel {
+  animation-play-state: paused; /* Detiene la animación */
+}
+/* Información sobre nosotros */
+.sobre-nosotros {
+  padding: 60px;
+  background: linear-gradient(to right, #00bfff, #007bff); /* Degradado azul celeste */
+  border-radius: 20px;
+  box-shadow: 0 4px 20px rgba(0, 123, 255, 0.2);
+  text-align: center;
+  margin-top: 50px;
+  color: #fff; /* Color de texto blanco para contraste */
+}
+
+.sobre-nosotros .caja-info {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px;
+  background-color: #fff; /* Fondo blanco para que el texto se vea */
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.sobre-nosotros h2 {
+  font-size: 48px; /* Tamaño grande para destacar */
+  font-weight: 900;
+  color: #007bff; /* Azul celeste para el título */
+  margin-bottom: 20px;
+  text-transform: uppercase;
+}
+
+.sobre-nosotros p {
+  font-size: 24px;
+  color: #333; /* Color oscuro para el texto (más legible) */
+  line-height: 1.8;
+  font-weight: 500; /* Negrita moderada */
+  margin-bottom: 30px;
+}
+
+.sobre-nosotros .caja-info strong {
+  font-weight: bold;
+  color: #007bff; /* Azul celeste para resaltar las palabras clave */
+}
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f0f0f0;
+  display: flex;
+}
+.menu-lateral {
+  width: 220px;
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+}
+/* Contenedor de tarjetas de trabajadores */
+/* Contenedor de tarjetas de trabajadores */
+.tarjetas-trabajadores {
+  display: flex; /* Esto asegura que las tarjetas estén en fila */
+  flex-wrap: nowrap; /* Las tarjetas no se moverán a la siguiente línea */
+  justify-content: start; /* Alinea las tarjetas desde el principio */
+  gap: 10px; /* Espacio entre las tarjetas */
+  padding: 20px;
+  overflow-x: auto; /* Si hay muchas tarjetas, se podrá desplazar horizontalmente */
+  width: 100%; /* Hace que ocupe todo el ancho disponible */
+}
+
+/* Estilo de cada tarjeta */
+.tarjeta {
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  padding: 15px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  width: 200px; /* El ancho de cada tarjeta */
+  height: 300px; /* El alto de cada tarjeta */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Efecto hover */
+.tarjeta:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Imágenes dentro de las tarjetas */
+.tarjeta img {
+  width: 100%;
+  height: 150px;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+/* Títulos dentro de las tarjetas */
+.tarjeta h3 {
+  margin: 10px 0;
+  font-size: 16px;
+  color: #333;
+  font-weight: bold;
+}
+
+/* Texto dentro de las tarjetas */
+.tarjeta p {
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 10px;
+}
+
+/* Botón de WhatsApp */
+.boton-wsp {
+  display: inline-block;
+  margin-top: 8px;
+  padding: 8px 12px;
+  background-color: #25d366; /* verde WhatsApp */
+  color: #fff;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 14px;
+  transition: background 0.3s ease;
+}
+
+.boton-wsp:hover {
+  background-color: #1ebe5d;
+}
+
+.boton-wsp i {
+  margin-right: 5px;
+}
+.tarjetas-oficios {
+  margin-left: 220px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px;
+  padding: 20px;
+  box-sizing: border-box;
+  background-color: #f1f1f1;
+}
+
+.tarjetas-oficios .tarjeta {
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.tarjetas-oficios .tarjeta img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  object-fit: cover;
+}
